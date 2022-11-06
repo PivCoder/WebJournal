@@ -1,10 +1,8 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-  <head>
-    <title>Домашняя страница</title>
+!DOCTYPE html>
+<head>
+  <title>Web journal</title>
   </head>
-
   <body>
-    Пример текста
+    <h1>Home page on jsp</h1>
   </body>
 </html>
