@@ -1,15 +1,13 @@
 package model;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 import java.util.List;
 import java.util.Objects;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 @Entity
@@ -22,31 +20,8 @@ public class UserType extends AbstractObject{
     @Column(name = "Наименование_Роли")
     private String roleName;
 
-    public UserType(String roleName) {
+    public UserType(List<User> users, String roleName) {
+        this.users = users;
         this.roleName = roleName;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof UserType)) return false;
-
-        UserType userType = (UserType) o;
-
-        if (!Objects.equals(users, userType.users)) return false;
-        return Objects.equals(roleName, userType.roleName);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId(), users, roleName);
-    }
-
-    @Override
-    public String toString() {
-        return "UserType{" +
-                "id=" + getId() +
-                ", roleName='" + roleName + '\'' +
-                '}';
     }
 }

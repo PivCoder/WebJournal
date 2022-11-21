@@ -1,13 +1,12 @@
 package model;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
+
+@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 @Entity
@@ -20,30 +19,9 @@ public class StatesArticle extends AbstractObject{
     @OneToMany(mappedBy = "statesArticle", fetch = FetchType.LAZY)
     private List<Article> articles;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof StatesArticle)) return false;
-
-        StatesArticle that = (StatesArticle) o;
-
-        if (!Objects.equals(Сategory, that.Сategory)) return false;
-        return Objects.equals(articles, that.articles);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = Сategory != null ? Сategory.hashCode() : 0;
-        result = 31 * result + (articles != null ? articles.hashCode() : 0);
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        return "StatesArticle{" +
-                "id=" + getId() +
-                ", Сategory='" + Сategory + '\'' +
-                '}';
+    public StatesArticle(String сategory, List<Article> articles) {
+        Сategory = сategory;
+        this.articles = articles;
     }
 }
 

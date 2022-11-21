@@ -1,15 +1,11 @@
 package model;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 @Entity
@@ -27,65 +23,30 @@ public class Article extends AbstractObject {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Категория")
-    private СategoriesArticle categoriesArticle;
+    private CategoriesArticle categoriesArticle;
 
     @Column(name = "Количество_Посещений")
     private int countVisits;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Article)) return false;
-
-        Article article = (Article) o;
-
-        if (countPages != article.countPages) return false;
-        if (countVisits != article.countVisits) return false;
-        if (!Objects.equals(name, article.name)) return false;
-        if (!Objects.equals(statesArticle, article.statesArticle))
-            return false;
-        if (!Objects.equals(categoriesArticle, article.categoriesArticle)) return false;
-        if (!Objects.equals(pictureRef, article.pictureRef)) return false;
-        if (!Objects.equals(bookmarks, article.bookmarks)) return false;
-        return Objects.equals(histories, article.histories);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + countPages;
-        result = 31 * result + (statesArticle != null ? statesArticle.hashCode() : 0);
-        result = 31 * result + (categoriesArticle != null ? categoriesArticle.hashCode() : 0);
-        result = 31 * result + countVisits;
-        result = 31 * result + (pictureRef != null ? pictureRef.hashCode() : 0);
-        result = 31 * result + (bookmarks != null ? bookmarks.hashCode() : 0);
-        result = 31 * result + (histories != null ? histories.hashCode() : 0);
-        return result;
-    }
-
     @Column(name = "Ссылка_Картинка")
     private String pictureRef;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "Закладки",
-            joinColumns = { @JoinColumn(name = "Статьи_Id") },
-            inverseJoinColumns = { @JoinColumn(name = "Пользователя_Id") })
-    private Set<User> bookmarks = new HashSet<User>();
+    @ManyToMany
+    List<User> users;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "Истории",
-            joinColumns = { @JoinColumn(name = "Статьи_Id") },
-            inverseJoinColumns = { @JoinColumn(name = "Пользователя_Id") })
-    private Set<User> histories = new HashSet<User>();
-
-    @Override
-    public String toString() {
-        return "Article{" +
-                "id=" + getId() +
-                ", name='" + name + '\'' +
-                ", countPages=" + countPages +
-                ", countVisits=" + countVisits +
-                ", pictureRef='" + pictureRef + '\'' +
-                '}';
+    public Article(String name,
+                   int countPages,
+                   StatesArticle statesArticle,
+                   CategoriesArticle categoriesArticle,
+                   int countVisits,
+                   String pictureRef,
+                   List<User> users) {
+        this.name = name;
+        this.countPages = countPages;
+        this.statesArticle = statesArticle;
+        this.categoriesArticle = categoriesArticle;
+        this.countVisits = countVisits;
+        this.pictureRef = pictureRef;
+        this.users = users;
     }
 }

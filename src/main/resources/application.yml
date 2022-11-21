@@ -4,9 +4,9 @@ server:
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/test
+    url: jdbc:postgresql://localhost:5432/Journal
     username: postgres
-    password: admin
+    password: 1
   jpa:
     generate-ddl: false
     properties:
