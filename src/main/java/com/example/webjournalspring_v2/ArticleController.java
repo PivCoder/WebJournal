@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/Article")
+@RequestMapping("/articles")
 public class ArticleController {
     @GetMapping
-    public String showDesignForm() {
-        return "Article";
+    public String showArticlesForm() {
+        return "articles";
     }
 }

@@ -15,7 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-@WebMvcTest(HomeController.class)
+@WebMvcTest(ArticleController.class)
 public class ControllerTest {
 
     @Autowired
@@ -29,8 +29,8 @@ public class ControllerTest {
 
     @Test
     public void testHomePage() throws Exception {
-        mockMvc.perform(get("/"))
+        mockMvc.perform(get("/Article"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("home"));
+                .andExpect(view().name("Article"));
     }
 }
