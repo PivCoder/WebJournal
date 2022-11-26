@@ -1,6 +1,6 @@
-package Repositoryes;
+package com.example.Repositoryes;
 
-import model.Authorization;
+import com.example.model.Authorization;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

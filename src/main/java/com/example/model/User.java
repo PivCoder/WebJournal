@@ -1,14 +1,9 @@
-package model;
-
-import lombok.Data;
-import lombok.NoArgsConstructor;
+package com.example.model;
 
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
-@Data
-@NoArgsConstructor
 @Entity(name = "User")
 @Table(name = "users")
 public class User extends AbstractObject{
@@ -38,19 +33,86 @@ public class User extends AbstractObject{
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "users")
     List<Article> articleList;
 
-    public User(String surname,String name, String patronymic, Double rating, String pictureRef) {
+    public User(){
+
+    }
+
+    public User(String name, String surname,
+                String patronymic,
+                Double rating,
+                String pictureRef, Authorization authorization, UserType userType, List<Article> articleList) {
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
         this.rating = rating;
         this.pictureRef = pictureRef;
+        this.authorization = authorization;
+        this.userType = userType;
+        this.articleList = articleList;
     }
 
-    public User(String surname,String name, Double rating, String pictureRef) {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
         this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public String getPatronymic() {
+        return patronymic;
+    }
+
+    public void setPatronymic(String patronymic) {
+        this.patronymic = patronymic;
+    }
+
+    public Double getRating() {
+        return rating;
+    }
+
+    public void setRating(Double rating) {
         this.rating = rating;
+    }
+
+    public String getPictureRef() {
+        return pictureRef;
+    }
+
+    public void setPictureRef(String pictureRef) {
         this.pictureRef = pictureRef;
+    }
+
+    public Authorization getAuthorization() {
+        return authorization;
+    }
+
+    public void setAuthorization(Authorization authorization) {
+        this.authorization = authorization;
+    }
+
+    public UserType getUserType() {
+        return userType;
+    }
+
+    public void setUserType(UserType userType) {
+        this.userType = userType;
+    }
+
+    public List<Article> getArticleList() {
+        return articleList;
+    }
+
+    public void setArticleList(List<Article> articleList) {
+        this.articleList = articleList;
     }
 
     @Override

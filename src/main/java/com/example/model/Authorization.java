@@ -1,12 +1,8 @@
-package model;
-
-import lombok.*;
+package com.example.model;
 
 import javax.persistence.*;
 import java.util.Objects;
 
-@Data
-@NoArgsConstructor
 @Entity(name = "Authorization")
 @Table(name = "authorizations")
 public class Authorization extends AbstractObject{
@@ -21,9 +17,37 @@ public class Authorization extends AbstractObject{
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
+    public Authorization(){
+
+    }
+
     public Authorization(String login, String password, User user) {
         this.login = login;
         this.password = password;
+        this.user = user;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
         this.user = user;
     }
 

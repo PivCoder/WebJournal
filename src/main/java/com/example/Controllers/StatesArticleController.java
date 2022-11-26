@@ -1,4 +1,4 @@
-package com.example.webjournalspring_v2;
+package com.example.Controllers;
 
 public class StatesArticleController {
 }

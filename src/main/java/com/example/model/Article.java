@@ -1,13 +1,9 @@
-package model;
-
-import lombok.*;
+package com.example.model;
 
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
-@Data
-@NoArgsConstructor
 @Entity(name = "Article")
 @Table(name = "articles")
 public class Article extends AbstractObject {
@@ -37,6 +33,10 @@ public class Article extends AbstractObject {
             inverseJoinColumns = { @JoinColumn(name = "user_id") })
     List<User> users;
 
+    public Article(){
+
+    }
+
     public Article(String name, int countPages, int countVisits, String pictureRef, StatesArticle statesArticle, CategoriesArticle categoriesArticle) {
         this.name = name;
         this.countPages = countPages;
@@ -44,6 +44,62 @@ public class Article extends AbstractObject {
         this.pictureRef = pictureRef;
         this.statesArticle = statesArticle;
         this.categoriesArticle = categoriesArticle;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getCountPages() {
+        return countPages;
+    }
+
+    public void setCountPages(int countPages) {
+        this.countPages = countPages;
+    }
+
+    public int getCountVisits() {
+        return countVisits;
+    }
+
+    public void setCountVisits(int countVisits) {
+        this.countVisits = countVisits;
+    }
+
+    public String getPictureRef() {
+        return pictureRef;
+    }
+
+    public void setPictureRef(String pictureRef) {
+        this.pictureRef = pictureRef;
+    }
+
+    public StatesArticle getStatesArticle() {
+        return statesArticle;
+    }
+
+    public void setStatesArticle(StatesArticle statesArticle) {
+        this.statesArticle = statesArticle;
+    }
+
+    public CategoriesArticle getCategoriesArticle() {
+        return categoriesArticle;
+    }
+
+    public void setCategoriesArticle(CategoriesArticle categoriesArticle) {
+        this.categoriesArticle = categoriesArticle;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 
     @Override

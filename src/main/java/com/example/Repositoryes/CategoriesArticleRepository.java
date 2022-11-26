@@ -1,6 +1,6 @@
-package Repositoryes;
+package com.example.Repositoryes;
 
-import model.CategoriesArticle;
+import com.example.model.CategoriesArticle;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

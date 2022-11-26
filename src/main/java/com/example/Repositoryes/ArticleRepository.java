@@ -1,7 +1,9 @@
-package Repositoryes;
+package com.example.Repositoryes;
 
-import model.Article;
+import com.example.model.Article;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface ArticleRepository extends JpaRepository<Article, Integer> {
 }

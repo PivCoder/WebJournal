@@ -1,14 +1,10 @@
-package model;
-
-import lombok.*;
+package com.example.model;
 
 import javax.persistence.*;
 
 import java.util.List;
 import java.util.Objects;
 
-@Data
-@NoArgsConstructor
 @Entity(name = "User_type")
 @Table(name = "user_types")
 public class UserType extends AbstractObject{
@@ -19,8 +15,28 @@ public class UserType extends AbstractObject{
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "userType")
     private List<User> users;
 
+    public UserType(){
+
+    }
+
     public UserType(String roleName) {
         this.roleName = roleName;
+    }
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 
     @Override

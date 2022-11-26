@@ -7,6 +7,7 @@ import static
 import static
         org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
+import com.example.Controllers.ArticleController;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

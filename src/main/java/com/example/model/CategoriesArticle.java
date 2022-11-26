@@ -1,13 +1,9 @@
-package model;
-
-import lombok.*;
+package com.example.model;
 
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
-@Data
-@NoArgsConstructor
 @Entity(name = "Category")
 @Table(name = "categories")
 public class CategoriesArticle extends AbstractObject{
@@ -18,8 +14,28 @@ public class CategoriesArticle extends AbstractObject{
     @OneToMany(mappedBy = "categoriesArticle", fetch = FetchType.LAZY)
     private List<Article> articles;
 
+    public CategoriesArticle(){
+
+    }
+
     public CategoriesArticle(String category) {
         this.category = category;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public List<Article> getArticles() {
+        return articles;
+    }
+
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
     }
 
     @Override
