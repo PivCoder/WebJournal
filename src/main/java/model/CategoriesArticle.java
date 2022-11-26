@@ -6,21 +6,39 @@ import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
-@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
-@Entity
-@Table(name = "Категории")
+@Entity(name = "Category")
+@Table(name = "categories")
 public class CategoriesArticle extends AbstractObject{
 
-    @Column(name = "Категория")
+    @Column
     private String category;
 
     @OneToMany(mappedBy = "categoriesArticle", fetch = FetchType.LAZY)
     private List<Article> articles;
 
-    public CategoriesArticle(String category, List<Article> articles) {
+    public CategoriesArticle(String category) {
         this.category = category;
-        this.articles = articles;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof CategoriesArticle)) return false;
+        CategoriesArticle categoriesArticle = (CategoriesArticle) o;
+        return Objects.equals(getId(), categoriesArticle.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
+    }
+
+    @Override
+    public String toString() {
+        return "CategoriesArticle{" +
+                "category='" + category + '\'' +
+                '}';
     }
 }

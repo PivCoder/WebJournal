@@ -1,9 +1,9 @@
 package Repositoryes;
 
 import model.StatesArticle;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface StatesArticleRepository extends CrudRepository<StatesArticle, Integer> {
+public interface StatesArticleRepository extends JpaRepository<StatesArticle, Integer> {
 }

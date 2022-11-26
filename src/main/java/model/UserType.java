@@ -7,21 +7,39 @@ import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
-@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
-@Entity
-@Table(name = "Тип_Пользователей")
+@Entity(name = "User_type")
+@Table(name = "user_types")
 public class UserType extends AbstractObject{
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "userType")//, cascade = CascadeType.ALL, orphanRemoval = true
-    private List<User> users;
-
-    @Column(name = "Наименование_Роли")
+    @Column
     private String roleName;
 
-    public UserType(List<User> users, String roleName) {
-        this.users = users;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "userType")
+    private List<User> users;
+
+    public UserType(String roleName) {
         this.roleName = roleName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof UserType)) return false;
+        UserType userType = (UserType) o;
+        return Objects.equals(getId(), userType.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
+    }
+
+    @Override
+    public String toString() {
+        return "UserType{" +
+                "roleName='" + roleName + '\'' +
+                '}';
     }
 }

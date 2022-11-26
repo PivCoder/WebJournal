@@ -1,47 +1,81 @@
 package model;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
-@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
-@Entity
-@Table(name = "Пользователи")
+@Entity(name = "User")
+@Table(name = "users")
 public class User extends AbstractObject{
 
-    @Column(name = "Имя")
+    @Column
     private String name;
 
-    @Column(name = "Фамилия")
+    @Column
     private String surname;
 
-    @Column(name = "Отчество")
+    @Column
     private String patronymic;
 
-    @Column(name = "Рейтинг")
+    @Column
     private Double rating;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Тип_Пользователя")
-    private UserType userType;
-
-    @Column(name = "Ссылка_картинка")
+    @Column
     private String pictureRef;
 
-    @ManyToMany
+    @OneToOne(mappedBy = "user")
+    private Authorization authorization;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_type_id")
+    private UserType userType;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "users")
     List<Article> articleList;
 
-    public User( String surname,String name, String patronymic,Double rating, String pictureRef) {
+    public User(String surname,String name, String patronymic, Double rating, String pictureRef) {
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
         this.rating = rating;
         this.pictureRef = pictureRef;
     }
+
+    public User(String surname,String name, Double rating, String pictureRef) {
+        this.name = name;
+        this.surname = surname;
+        this.rating = rating;
+        this.pictureRef = pictureRef;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return Objects.equals(getId(), user.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", patronymic='" + patronymic + '\'' +
+                ", rating=" + rating +
+                ", pictureRef='" + pictureRef + '\'' +
+                '}';
+    }
 }
+
 
