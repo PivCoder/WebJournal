@@ -1,7 +1,7 @@
-package com.example.Service.Implements;
+package com.example.Service;
 
 import com.example.Repositoryes.UserRepository;
-import com.example.Service.UserService;
+import com.example.Service.API.UserService;
 import com.example.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ public class UserImplement implements UserService {
 
     @Override
     public User addUser(User user) {
-        User savedUser = userRepository.saveAndFlush(user);
+        User savedUser = userRepository.save(user);
         return savedUser;
     }
 
@@ -33,7 +33,7 @@ public class UserImplement implements UserService {
 
     @Override
     public User editUser(User user) {
-        return userRepository.saveAndFlush(user);
+        return userRepository.save(user);
     }
 
     @Override

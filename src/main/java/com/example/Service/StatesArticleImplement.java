@@ -1,7 +1,7 @@
-package com.example.Service.Implements;
+package com.example.Service;
 
 import com.example.Repositoryes.StatesArticleRepository;
-import com.example.Service.StatesArticleService;
+import com.example.Service.API.StatesArticleService;
 import com.example.model.StatesArticle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ public class StatesArticleImplement implements StatesArticleService {
 
     @Override
     public StatesArticle addStatesArticle(StatesArticle statesArticle) {
-        StatesArticle savedStateArticle = statesArticleRepository.saveAndFlush(statesArticle);
+        StatesArticle savedStateArticle = statesArticleRepository.save(statesArticle);
         return savedStateArticle;
     }
 
@@ -33,7 +33,7 @@ public class StatesArticleImplement implements StatesArticleService {
 
     @Override
     public StatesArticle editStatesArticle(StatesArticle statesArticle) {
-        return statesArticleRepository.saveAndFlush(statesArticle);
+        return statesArticleRepository.save(statesArticle);
     }
 
     @Override

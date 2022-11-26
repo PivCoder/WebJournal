@@ -1,7 +1,7 @@
-package com.example.Service.Implements;
+package com.example.Service;
 
 import com.example.Repositoryes.UserTypeRepository;
-import com.example.Service.UserTypeService;
+import com.example.Service.API.UserTypeService;
 import com.example.model.UserType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ public class UserTypeImplement implements UserTypeService {
 
     @Override
     public UserType addUserType(UserType userType) {
-        UserType savedUserType = userTypeRepository.saveAndFlush(userType);
+        UserType savedUserType = userTypeRepository.save(userType);
         return savedUserType;
     }
 
@@ -33,7 +33,7 @@ public class UserTypeImplement implements UserTypeService {
 
     @Override
     public UserType editUserType(UserType userType) {
-        return userTypeRepository.saveAndFlush(userType);
+        return userTypeRepository.save(userType);
     }
 
     @Override

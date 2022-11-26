@@ -1,7 +1,7 @@
-package com.example.Service.Implements;
+package com.example.Service;
 
 import com.example.Repositoryes.ArticleRepository;
-import com.example.Service.ArticleService;
+import com.example.Service.API.ArticleService;
 import com.example.model.Article;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ public class ArticleServiceImplement implements ArticleService {
 
     @Override
     public Article addArticle(Article article) {
-        Article savedArticle = articleRepository.saveAndFlush(article);
+        Article savedArticle = articleRepository.save(article);
         return savedArticle;
     }
 
@@ -26,6 +26,7 @@ public class ArticleServiceImplement implements ArticleService {
         articleRepository.deleteById(id);
     }
 
+    //TODO добавить условие вывода не Null во всех сущностях
     @Override
     public Optional<Article> getArticleById(long id) {
         return articleRepository.findById(id);
@@ -33,7 +34,7 @@ public class ArticleServiceImplement implements ArticleService {
 
     @Override
     public Article editArticle(Article article) {
-        return articleRepository.saveAndFlush(article);
+        return articleRepository.save(article);
     }
 
     @Override

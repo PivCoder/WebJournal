@@ -1,7 +1,7 @@
-package com.example.Service.Implements;
+package com.example.Service;
 
 import com.example.Repositoryes.AuthorizationRepository;
-import com.example.Service.AuthorizationService;
+import com.example.Service.API.AuthorizationService;
 import com.example.model.Authorization;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ public class AuthorizationServiceImplement implements AuthorizationService {
 
     @Override
     public Authorization addAuthorization(Authorization authorization) {
-        Authorization savedAuthorization = authorizationRepository.saveAndFlush(authorization);
+        Authorization savedAuthorization = authorizationRepository.save(authorization);
         return savedAuthorization;
     }
 
@@ -33,7 +33,7 @@ public class AuthorizationServiceImplement implements AuthorizationService {
 
     @Override
     public Authorization editAuthorization(Authorization authorization) {
-        return authorizationRepository.saveAndFlush(authorization);
+        return authorizationRepository.save(authorization);
     }
 
     @Override

@@ -1,7 +1,7 @@
-package com.example.Service.Implements;
+package com.example.Service;
 
 import com.example.Repositoryes.CategoriesArticleRepository;
-import com.example.Service.CategoriesArticleService;
+import com.example.Service.API.CategoriesArticleService;
 import com.example.model.CategoriesArticle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ public class CategoriesArticleImplement implements CategoriesArticleService {
 
     @Override
     public CategoriesArticle addCategoriesArticle(CategoriesArticle categoriesArticle) {
-        CategoriesArticle savedCategoriesArticle = categoriesArticleRepository.saveAndFlush(categoriesArticle);
+        CategoriesArticle savedCategoriesArticle = categoriesArticleRepository.save(categoriesArticle);
         return savedCategoriesArticle;
     }
 
@@ -33,7 +33,7 @@ public class CategoriesArticleImplement implements CategoriesArticleService {
 
     @Override
     public CategoriesArticle editCategoriesArticle(CategoriesArticle categoriesArticle) {
-        return categoriesArticleRepository.saveAndFlush(categoriesArticle);
+        return categoriesArticleRepository.save(categoriesArticle);
     }
 
     @Override
