@@ -5,7 +5,7 @@ import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
-@Entity(name = "User_type")
+@Entity(name = "user_type")
 @Table(name = "user_types")
 public class UserType extends AbstractObject{
 

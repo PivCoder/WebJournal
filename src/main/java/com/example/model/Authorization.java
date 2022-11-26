@@ -3,7 +3,7 @@ package com.example.model;
 import javax.persistence.*;
 import java.util.Objects;
 
-@Entity(name = "Authorization")
+@Entity(name = "authorization")
 @Table(name = "authorizations")
 public class Authorization extends AbstractObject{
 
