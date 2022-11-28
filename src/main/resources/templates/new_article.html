@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Scroll Header</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic|Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" th:href="@{/style/style.css}" />
+</head>
+
+<body>
+<main>
+    <header id="app-header" class="app-header">
+        <div class="background-container">
+            <div id="background-back" class="background"></div>
+            <div id="background-front" class="background"></div>
+        </div>
+
+        <div class="header-content">
+            <div id="small-toolbar" class="app-toolbar">
+                <div id="small-title" class="small-title">Научный журнал</div>
+            </div>
+
+            <div id="large-toolbar" class="app-toolbar tall">
+                <div id="large-title" class="large-title">Научный журнал</div>
+            </div>
+        </div>
+
+        <div id="header">
+            <div id="navigation">
+                <ul id="menu">
+                    <li><a href="">Профиль</a></li>
+                    <li><a href="autorization">Войти</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="card">
+
+        <div class="card-title">Title</div>
+        <form method="post" th:action="@{/articles}" th:object="${article}">
+            <input id="name" required type="text" th:field = "*{name}">
+            <input id="countPages" required type="text" th:field = "*{countPages}">
+            <input id="countVisits" required type="text" th:field = "*{countVisits}">
+            <input id="pictureRef" required type="text" th:field = "*{pictureRef}">
+            <input id="statesArticle" required type="text" th:field = "*{statesArticle}">
+            <input id="categoriesArticle" required type="text" th:field = "*{categoriesArticle}">
+            <input type="submit" value="Добваить">
+        </form>
+    </div>
+</main>
+
+
+
+<script th:src= "@{https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js}"></script>
+<script th:src="@{/js/index.js}"></script>
+</body>
+</html>

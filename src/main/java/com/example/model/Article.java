@@ -1,5 +1,7 @@
 package com.example.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
@@ -19,22 +21,32 @@ public class Article extends AbstractObject {
     @Column
     private String pictureRef;
 
+    @JsonIgnore
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "state_id")
     private StatesArticle statesArticle;
 
+    @JsonIgnore
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "category_id")
     private CategoriesArticle categoriesArticle;
 
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "article_users",
-            joinColumns = { @JoinColumn(name = "article_id") },
-            inverseJoinColumns = { @JoinColumn(name = "user_id") })
+    @JoinTable(name = "articles_users",
+            joinColumns = { @JoinColumn(name = "articles_id") },
+            inverseJoinColumns = { @JoinColumn(name = "users_id") })
     List<User> users;
 
     public Article(){
 
+    }
+
+    public Article(String name, int countPages, int countVisits, String pictureRef) {
+        this.name = name;
+        this.countPages = countPages;
+        this.countVisits = countVisits;
+        this.pictureRef = pictureRef;
     }
 
     public Article(String name, int countPages, int countVisits, String pictureRef, StatesArticle statesArticle, CategoriesArticle categoriesArticle) {
@@ -44,6 +56,16 @@ public class Article extends AbstractObject {
         this.pictureRef = pictureRef;
         this.statesArticle = statesArticle;
         this.categoriesArticle = categoriesArticle;
+    }
+
+    public Article(String name, int countPages, int countVisits, String pictureRef, StatesArticle statesArticle, CategoriesArticle categoriesArticle, List<User> users) {
+        this.name = name;
+        this.countPages = countPages;
+        this.countVisits = countVisits;
+        this.pictureRef = pictureRef;
+        this.statesArticle = statesArticle;
+        this.categoriesArticle = categoriesArticle;
+        this.users = users;
     }
 
     public String getName() {

@@ -22,6 +22,11 @@ public class CategoriesArticle extends AbstractObject{
         this.category = category;
     }
 
+    public CategoriesArticle(String category, List<Article> articles) {
+        this.category = category;
+        this.articles = articles;
+    }
+
     public String getCategory() {
         return category;
     }

@@ -21,6 +21,11 @@ public class Authorization extends AbstractObject{
 
     }
 
+    public Authorization(String login, String password) {
+        this.login = login;
+        this.password = password;
+    }
+
     public Authorization(String login, String password, User user) {
         this.login = login;
         this.password = password;

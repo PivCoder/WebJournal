@@ -37,7 +37,19 @@ public class User extends AbstractObject{
 
     }
 
-    public User(String name, String surname,
+    public User(String name,
+                String surname,
+                String patronymic, Double rating, String pictureRef, UserType userType) {
+        this.name = name;
+        this.surname = surname;
+        this.patronymic = patronymic;
+        this.rating = rating;
+        this.pictureRef = pictureRef;
+        this.userType = userType;
+    }
+
+    public User(String name,
+                String surname,
                 String patronymic,
                 Double rating,
                 String pictureRef, Authorization authorization, UserType userType, List<Article> articleList) {
