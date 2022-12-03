@@ -12,7 +12,7 @@ public class UserType extends AbstractObject{
     @Column
     private String roleName;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "userType")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "userType", cascade = CascadeType.ALL)
     private List<User> users;
 
     public UserType(){

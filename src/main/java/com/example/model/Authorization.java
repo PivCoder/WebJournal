@@ -1,6 +1,7 @@
 package com.example.model;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Entity(name = "authorization")
@@ -13,9 +14,8 @@ public class Authorization extends AbstractObject{
     @Column
     private String password;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user;
+    @OneToMany(mappedBy = "authorization", fetch = FetchType.LAZY)
+    private List<User> users;
 
     public Authorization(){
 
@@ -26,10 +26,10 @@ public class Authorization extends AbstractObject{
         this.password = password;
     }
 
-    public Authorization(String login, String password, User user) {
+    public Authorization(String login, String password, List<User> users) {
         this.login = login;
         this.password = password;
-        this.user = user;
+        this.users = users;
     }
 
     public String getLogin() {
@@ -48,12 +48,12 @@ public class Authorization extends AbstractObject{
         this.password = password;
     }
 
-    public User getUser() {
-        return user;
+    public List<User> getUsers() {
+        return users;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 
     @Override

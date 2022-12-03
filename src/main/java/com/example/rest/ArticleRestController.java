@@ -11,8 +11,6 @@ public class ArticleRestController {
 
     @GetMapping("/get")
     public ResponseEntity<?> get() {
-
-
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 

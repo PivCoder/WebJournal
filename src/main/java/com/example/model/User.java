@@ -23,10 +23,11 @@ public class User extends AbstractObject{
     @Column
     private String pictureRef;
 
-    @OneToOne(mappedBy = "user")
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "authorization_id")
     private Authorization authorization;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_type_id")
     private UserType userType;
 
@@ -35,6 +36,14 @@ public class User extends AbstractObject{
 
     public User(){
 
+    }
+
+    public User(String name, String surname, String patronymic, Double rating, String pictureRef) {
+        this.name = name;
+        this.surname = surname;
+        this.patronymic = patronymic;
+        this.rating = rating;
+        this.pictureRef = pictureRef;
     }
 
     public User(String name,
