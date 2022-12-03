@@ -8,9 +8,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
+//@Configuration
 public class LoadDataBase {
-    private static final Logger log = LoggerFactory.getLogger(LoadDataBase.class);
+    /*private static final Logger log = LoggerFactory.getLogger(LoadDataBase.class);
 
     @Bean
     CommandLineRunner initDataBase(UserImplement userImplement, AuthorizationServiceImplement authorizationServiceImplement){
@@ -24,5 +24,5 @@ public class LoadDataBase {
         return args -> {
             log.info("Preloading " + userImplement.addUser(user));
         };
-    }
+    }*/
 }

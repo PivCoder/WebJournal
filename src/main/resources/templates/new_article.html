@@ -27,20 +27,16 @@
                 <div id="large-title" class="large-title">Научный журнал</div>
             </div>
         </div>
-
-        <div id="header">
-            <div id="navigation">
-                <ul id="menu">
-                    <li><a href="">Профиль</a></li>
-                    <li><a href="autorization">Войти</a></li>
-                </ul>
-            </div>
-        </div>
     </header>
     <div class="card">
 
         <div class="card-title">Title</div>
-      
+            <form action="#" th:action="@{/new_article}" th:object="${newArticle}" method="post">
+                <input type="text" th:field="*{name}" />
+                <input type="submit" />
+            </form>
+        </form>
+
     </div>
 </main>
 
