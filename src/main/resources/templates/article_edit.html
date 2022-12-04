@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Добавление статьи</title>
+    <title>Редактирование статьи</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic|Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel="stylesheet" th:href="@{/style/style.css}" />
@@ -29,37 +29,23 @@
         </div>
     </header>
     <div class="card">
-
-        <div class="card-title">Title</div>
-            <form th:action="@{/new_article}" method="post">
+        <div class="card-title">Редактирование статьи</div>
+        <div th:each="field : ${article}">
+            <form method="post">
                 <label>
                     Наименование статьи
-                    <input type="text" name="name">
+                    <input type="text" name="name" th:value="${field.name}">
                 </label>
                 <br>
-                <label>
-                    <input type="hidden" name="countPages" th:value="0">
-                </label>
-                <label>
-                    <input type="hidden" name="countVisits" th:value="0">
-                </label>
                 <label>
                     Ссылка на картинку
-                    <input type="text" name="pictureRef">
+                    <input type="text" name="pictureRef" th:value="${field.pictureRef}">
                 </label>
                 <br>
-                <label>
-                    <input type="hidden" name="statesArticle" value="На рассмотрении">
-                </label>
-                <br>
-                <label>
-                    Категория статьи
-                    <input type="text" name="categoriesArticle">
-                </label>
-                <br>
-                <button type="submit">Добавить</button>
+                <button type="submit">Обновить</button>
             </form>
         </div>
+    </div>
 </main>
 
 

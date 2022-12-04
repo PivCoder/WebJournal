@@ -3,7 +3,7 @@
           xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
-        <title>Scroll Header</title>
+        <title>Список статей</title>
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic|Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
         <link rel="stylesheet" th:href="@{/style/style.css}" />
@@ -48,6 +48,7 @@
                     <td th:text="${article.pictureRef}"></td>
                     <td th:text="${article.statesArticle.getState()}"></td>
                     <td th:text="${article.categoriesArticle.getCategory()}"></td>
+                    <td><a th:href="'/article/' + ${article.id}">Открыть</a></td>
                 </tr>
             </table>
 
