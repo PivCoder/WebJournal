@@ -49,12 +49,17 @@
                 </label>
                 <br>
                 <label>
-                    <input type="hidden" name="statesArticle" value="На рассмотрении">
+                    <input type="hidden" name="stateArticle" th:value="${T(com.example.model.Enums.States).WAITING}">
                 </label>
                 <br>
                 <label>
-                    Категория статьи
-                    <input type="text" name="categoriesArticle">
+                    Выбор категории
+                    <select id="category" name="categoryArticle">
+                        <option th:each="categoryArticle : ${T(com.example.model.Enums.Categories).values()}"
+                                th:value="${categoryArticle}"
+                                th:text="${categoryArticle}">
+                        </option>
+                    </select>
                 </label>
                 <br>
                 <button type="submit">Добавить</button>

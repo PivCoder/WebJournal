@@ -42,6 +42,16 @@
                     <input type="text" name="pictureRef" th:value="${field.pictureRef}">
                 </label>
                 <br>
+                <label>
+                    Выбор категории
+                    <select id="category" name="categoryArticle">
+                        <option th:each="categoryArticle : ${T(com.example.model.Enums.Categories).values()}"
+                                th:value="${categoryArticle}"
+                                th:text="${categoryArticle}">
+                        </option>
+                    </select>
+                </label>
+                <br>
                 <button type="submit">Обновить</button>
             </form>
         </div>

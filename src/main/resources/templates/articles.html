@@ -46,8 +46,8 @@
                     <td th:text="${article.countPages}"></td>
                     <td th:text="${article.countVisits}"></td>
                     <td th:text="${article.pictureRef}"></td>
-                    <td th:text="${article.statesArticle.getState()}"></td>
-                    <td th:text="${article.categoriesArticle.getCategory()}"></td>
+                    <td th:text="${article.state}"></td>
+                    <td th:text="${article.category}"></td>
                     <td><a th:href="'/article/' + ${article.id}">Открыть</a></td>
                 </tr>
             </table>

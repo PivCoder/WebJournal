@@ -1,5 +1,7 @@
 package com.example.model;
 
+import com.example.model.Enums.UserTypes;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
@@ -23,13 +25,12 @@ public class User extends AbstractObject{
     @Column
     private String pictureRef;
 
+    @Column
+    private UserTypes userType;
+
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "authorization_id")
     private Authorization authorization;
-
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_type_id")
-    private UserType userType;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "users")
     List<Article> articleList;
@@ -48,7 +49,7 @@ public class User extends AbstractObject{
 
     public User(String name,
                 String surname,
-                String patronymic, Double rating, String pictureRef, UserType userType) {
+                String patronymic, Double rating, String pictureRef, UserTypes userType) {
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
@@ -61,7 +62,7 @@ public class User extends AbstractObject{
                 String surname,
                 String patronymic,
                 Double rating,
-                String pictureRef, Authorization authorization, UserType userType, List<Article> articleList) {
+                String pictureRef, Authorization authorization, UserTypes userType, List<Article> articleList) {
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
@@ -120,11 +121,11 @@ public class User extends AbstractObject{
         this.authorization = authorization;
     }
 
-    public UserType getUserType() {
+    public UserTypes getUserType() {
         return userType;
     }
 
-    public void setUserType(UserType userType) {
+    public void setUserType(UserTypes userType) {
         this.userType = userType;
     }
 
@@ -157,6 +158,7 @@ public class User extends AbstractObject{
                 ", patronymic='" + patronymic + '\'' +
                 ", rating=" + rating +
                 ", pictureRef='" + pictureRef + '\'' +
+                ", userType='" + userType + '\'' +
                 '}';
     }
 }

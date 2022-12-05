@@ -33,7 +33,7 @@
             <h1 th:text="${field.name}"></h1>
             <p th:text="${field.countPages}"></p>
             <p th:text="${field.countVisits}"></p>
-            <p th:text="${field.categoriesArticle.getCategory()}"></p>
+            <p th:text="${field.category}"></p>
             <a th:href="'/article/' + ${field.id} + '/edit'">Редактировать</a>
             <form th:action="'/article/' + ${field.id} + '/delete'" method="post">
                 <button type="submit">Удалить</button>

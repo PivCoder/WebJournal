@@ -2,8 +2,8 @@ package com.example.Controllers;
 
 import com.example.Service.ArticleServiceImplement;
 import com.example.model.Article;
-import com.example.model.CategoriesArticle;
-import com.example.model.StatesArticle;
+import com.example.model.Enums.Categories;
+import com.example.model.Enums.States;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,12 +44,8 @@ public class ArticleController {
     @PostMapping("/new_article")
     public String articlePostAdd(@RequestParam String name, @RequestParam String countPages,
                                  @RequestParam String countVisits, @RequestParam String pictureRef,
-                                 @RequestParam String statesArticle, @RequestParam String categoriesArticle,
+                                 @RequestParam States stateArticle, @RequestParam Categories categoryArticle,
                                  Model model){
-        StatesArticle stateArticle = new StatesArticle();
-        stateArticle.setState(statesArticle);
-        CategoriesArticle categoryArticle = new CategoriesArticle();
-        categoryArticle.setCategory(categoriesArticle);
         Article article = new Article(name, Integer.parseInt(countPages), Integer.parseInt(countVisits),
                 pictureRef, stateArticle, categoryArticle);
         articleServiceImplement.addArticle(article);

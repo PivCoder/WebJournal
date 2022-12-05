@@ -1,5 +1,7 @@
 package com.example.model;
 
+import com.example.model.Enums.Categories;
+import com.example.model.Enums.States;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -21,15 +23,11 @@ public class Article extends AbstractObject {
     @Column
     private String pictureRef;
 
-    @JsonIgnore
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "state_id")
-    private StatesArticle statesArticle;
+    @Column
+    private States state;
 
-    @JsonIgnore
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "category_id")
-    private CategoriesArticle categoriesArticle;
+    @Column
+    private Categories category;
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -49,22 +47,22 @@ public class Article extends AbstractObject {
         this.pictureRef = pictureRef;
     }
 
-    public Article(String name, int countPages, int countVisits, String pictureRef, StatesArticle statesArticle, CategoriesArticle categoriesArticle) {
+    public Article(String name, int countPages, int countVisits, String pictureRef, States state, Categories category) {
         this.name = name;
         this.countPages = countPages;
         this.countVisits = countVisits;
         this.pictureRef = pictureRef;
-        this.statesArticle = statesArticle;
-        this.categoriesArticle = categoriesArticle;
+        this.state = state;
+        this.category = category;
     }
 
-    public Article(String name, int countPages, int countVisits, String pictureRef, StatesArticle statesArticle, CategoriesArticle categoriesArticle, List<User> users) {
+    public Article(String name, int countPages, int countVisits, String pictureRef, States state, Categories category, List<User> users) {
         this.name = name;
         this.countPages = countPages;
         this.countVisits = countVisits;
         this.pictureRef = pictureRef;
-        this.statesArticle = statesArticle;
-        this.categoriesArticle = categoriesArticle;
+        this.state = state;
+        this.category = category;
         this.users = users;
     }
 
@@ -100,20 +98,20 @@ public class Article extends AbstractObject {
         this.pictureRef = pictureRef;
     }
 
-    public StatesArticle getStatesArticle() {
-        return statesArticle;
+    public States getState() {
+        return state;
     }
 
-    public void setStatesArticle(StatesArticle statesArticle) {
-        this.statesArticle = statesArticle;
+    public void setState(States state) {
+        this.state = state;
     }
 
-    public CategoriesArticle getCategoriesArticle() {
-        return categoriesArticle;
+    public Categories getCategory() {
+        return category;
     }
 
-    public void setCategoriesArticle(CategoriesArticle categoriesArticle) {
-        this.categoriesArticle = categoriesArticle;
+    public void setCategory(Categories category) {
+        this.category = category;
     }
 
     public List<User> getUsers() {
@@ -144,6 +142,8 @@ public class Article extends AbstractObject {
                 ", countPages=" + countPages +
                 ", countVisits=" + countVisits +
                 ", pictureRef='" + pictureRef + '\'' +
+                ", state='" + state + '\'' +
+                ", category='" + category + '\'' +
                 '}';
     }
 }
