@@ -36,6 +36,15 @@
                     Наименование статьи
                     <input type="text" name="name" th:value="${field.name}">
                 </label>
+                <label>
+                    <input type="hidden" name="countPages" th:value="${field.countPages}">
+                </label>
+                <label>
+                    <input type="hidden" name="countVisits" th:value="${field.countVisits}">
+                </label>
+                <label>
+                    <input type="hidden" name="stateArticle" th:value="${field.state}">
+                </label>
                 <br>
                 <label>
                     Ссылка на картинку

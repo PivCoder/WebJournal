@@ -64,11 +64,17 @@ public class ArticleController {
     //TODO доделать изменение category и state
     @PostMapping("/article/{id}/edit")
     public String articlePostEdit(@PathVariable("id") long id,
-                                 @RequestParam String name, @RequestParam String pictureRef,
-                                 Model model){
+                                  @RequestParam String name, @RequestParam String countPages,
+                                  @RequestParam String countVisits, @RequestParam String pictureRef,
+                                  @RequestParam States stateArticle, @RequestParam Categories categoryArticle,
+                                  Model model){
        Article article = articleServiceImplement.getArticleById(id).orElseThrow();
        article.setName(name);
+       article.setCountPages(Integer.parseInt(countPages));
+       article.setCountVisits(Integer.parseInt(countVisits));
        article.setPictureRef(pictureRef);
+       article.setState(stateArticle);
+       article.setCategory(categoryArticle);
        articleServiceImplement.editArticle(article);
        return "redirect:/articles";
     }
