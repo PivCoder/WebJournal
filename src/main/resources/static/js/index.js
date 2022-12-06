@@ -1,6 +1,3 @@
-
-TweenLite.defaultEase = Linear.easeNone;
-
 var header     = document.querySelector("#app-header");
 var bgBack     = document.querySelector("#background-back");
 var bgFront    = document.querySelector("#background-front");

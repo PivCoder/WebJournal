@@ -1,68 +1,19 @@
-.modal {
-background-image: url('/images/5509862.jpg');
-    display: none; 
-    position: fixed;
-    z-index: 1; 
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%; 
 
-}
-
-div.container4 
-{ 
-    background: linear-gradient(105deg, rgba(255,255,255,.2) 39%, rgba(51,56,57,1) 96%) center center / 400px 200px no-repeat,
- center no-repeat, rebeccapurple;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%)
-}
 div.container1
 { 
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%)
+    transform: translate(-45%, -50%)
 }
 
-.margin-bottom-20 {display:block; margin-bottom:20px}
+label {
+color: 3f51b5;}
 
-.modal-content {
-    background-color: #fefefe;
-    margin: 5px auto; 
-    border: 1px solid #888;
-    width: 80%; 
+p{
+font-family: Verdana;
+color: white;
+background-color: 3f51b5;
 }
 
-.close {
-    
-    position: absolute;
-    right: 25px;
-    top: 0;
-    color: #000;
-    font-size: 35px;
-    font-weight: bold;
-}
 
-.close:hover,
-.close:focus {
-    color: #ffffff;
-    cursor: pointer;
-}
-
-.animate {
-    -webkit-animation: animatezoom 0.6s;
-    animation: animatezoom 0.6s
-}
-
-@-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(0)}
-    to {-webkit-transform: scale(1)}
-}
-
-@keyframes animatezoom {
-    from {transform: scale(0)}
-    to {transform: scale(1)}
-}

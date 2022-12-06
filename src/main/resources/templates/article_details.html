@@ -3,46 +3,60 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Просмотр статьи</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic|Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <link rel="stylesheet" th:href="@{/style/style.css}" />
+  <meta charset="UTF-8">
+  <title>Scroll Header</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic|Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  <link rel="stylesheet" th:href="@{/style/style11.css}" />
 </head>
 
 <body>
-<main>
-    <header id="app-header" class="app-header">
-        <div class="background-container">
-            <div id="background-back" class="background"></div>
-            <div id="background-front" class="background"></div>
-        </div>
+  <main>
+  <header id="app-header" class="app-header">
 
-        <div class="header-content">
-            <div id="small-toolbar" class="app-toolbar">
-                <div id="small-title" class="small-title">Научный журнал</div>
-            </div>
 
-            <div id="large-toolbar" class="app-toolbar tall">
-                <div id="large-title" class="large-title">Научный журнал</div>
-            </div>
-        </div>
-    </header>
-    <div class="card">
-        <div th:each="field : ${article}">
-            <h1 th:text="${field.name}"></h1>
-            <p th:text="${field.countPages}"></p>
-            <p th:text="${field.countVisits}"></p>
-            <p th:text="${field.category}"></p>
-            <a th:href="'/article/' + ${field.id} + '/edit'">Редактировать</a>
-            <form th:action="'/article/' + ${field.id} + '/delete'" method="post">
-                <button type="submit">Удалить</button>
-            </form>
-        </div>
+    <div class="background-container">
+      <div id="background-back" class="background"></div>
+      <div id="background-front" class="background"></div>
     </div>
+
+    <div class="header-content">
+      <div id="small-toolbar" class="app-toolbar">
+        <div id="small-title" class="small-title">Название статьи</div>
+      </div>
+
+      <div id="large-toolbar" class="app-toolbar tall">
+        <div id="large-title" class="large-title">Название статьи</div>
+      </div>
+    </div>
+
+ 
+
+<div id="header">    
+      <div align = "left">     
+    </div>
+</div>
+ </header>
+
+
+  <div class="card">
+
+    <div class="card-title">Заголовок</div>
+      <div th:each="field : ${article}">
+        <h1 th:text="${field.name}"></h1>
+        <p th:text="${field.countPages}"></p>
+        <p th:text="${field.countVisits}"></p>
+        <p th:text="${field.category}"></p>
+        <a th:href="'/article/' + ${field.id} + '/edit'">Редактировать</a>
+        <form th:action="'/article/' + ${field.id} + '/delete'" method="post">
+          <button type="submit">Удалить</button>
+        </form>
+      </div>
+  </div>
 </main>
 
-<script th:src= "@{https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js}"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js'></script>
 <script th:src="@{/js/index.js}"></script>
 </body>
 </html>
