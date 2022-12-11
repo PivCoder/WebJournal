@@ -22,6 +22,11 @@ public class AuthorizationServiceImplement implements AuthorizationService {
     }
 
     @Override
+    public Authorization findByUsername(String username) {
+        return authorizationRepository.findByUsername(username);
+    }
+
+    @Override
     public void deleteAuthorization(long id) {
         authorizationRepository.deleteById(id);
     }

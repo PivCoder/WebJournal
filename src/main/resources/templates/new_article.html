@@ -31,10 +31,15 @@
     <div class="card">
 
         <div class="card-title">Title</div>
-            <form th:action="@{/new_article}" method="post">
+            <form th:action="@{/new_article}" method="post" enctype="multipart/form-data">
                 <label>
                     Наименование статьи
                     <input type="text" name="name">
+                </label>
+                <br>
+                <label>
+                    Прикрепите файл статьи
+                    <input type="file" name="file" />
                 </label>
                 <br>
                 <label>

@@ -15,3 +15,7 @@ spring:
         ddl.auto: false
         show_sql: true
         format_sql: true
+  servlet:
+    multipart:
+      max-file-size: 30MB
+      max-request-size: 30MB

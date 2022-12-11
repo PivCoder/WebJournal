@@ -25,6 +25,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.7.5'
     implementation 'org.springframework:spring-webmvc:5.3.23'
     implementation('org.springframework.boot:spring-boot-starter-validation')
+    implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '3.9'
     compileOnly 'org.projectlombok:lombok:1.18.24'
     developmentOnly 'org.springframework.boot:spring-boot-devtools:2.7.5'
     runtimeOnly 'org.postgresql:postgresql:42.5.0'

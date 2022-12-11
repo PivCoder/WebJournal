@@ -45,6 +45,8 @@
     <div class="card-title">Заголовок</div>
       <div th:each="field : ${article}">
         <h1 th:text="${field.name}"></h1>
+        <div th:each="string : ${articleText}">
+          <p th:text="${string}"></p>
         <p th:text="${field.countPages}"></p>
         <p th:text="${field.countVisits}"></p>
         <p th:text="${field.category}"></p>

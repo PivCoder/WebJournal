@@ -1,5 +1,5 @@
 package com.example.model.Enums;
 
 public enum UserTypes {
-    ADMINISTRATOR, USER, REDACTOR;
+    ROLE_ADMIN, ROLE_USER, ROLE_MODERATOR;
 }

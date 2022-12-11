@@ -111,22 +111,22 @@
 				</div> <!-- cd-login -->
 
 				<div id="cd-signup"> <!-- форма регистрации -->
-					<form class="cd-form">
+					<form class="cd-form" th:action="@{/register_new_user}" method="post">
 						<p class="fieldset">
 							<label class="image-replace cd-username" for="signup-username">Имя пользователя</label>
-							<input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Имя пользователя">
+							<input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Имя пользователя" name="name">
 							<span class="cd-error-message">Ошибка</span>
 						</p>
 
 						<p class="fieldset">
 							<label class="image-replace cd-email" for="signup-email">E-mail</label>
-							<input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="E-mail">
+							<input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="E-mail" name="username">
 							<span class="cd-error-message">Ошибка</span>
 						</p>
 
 						<p class="fieldset">
 							<label class="image-replace cd-password" for="signup-password">Пароль</label>
-							<input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="Пароль">
+							<input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="Пароль" name="password">
 							<a href="#0" class="hide-password">Скрыть</a>
 							<span class="cd-error-message">Ошибка</span>
 						</p>
