@@ -48,7 +48,7 @@ public class ArticleController {
     public String showArticles(Model model) {
         Iterable<Article> articles = articleServiceImplement.getAllArticles();
         model.addAttribute("articles", articles);
-        return "articles";
+        return "articles_redesign";
     }
 
     @GetMapping("/article/{id}")
