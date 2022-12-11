@@ -9,20 +9,16 @@ import com.example.model.Enums.States;
 import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
-import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -37,6 +33,7 @@ public class ArticleController {
     private AuthorizationServiceImplement authorizationServiceImplement;
     private PasswordEncoder passwordEncoder;
     private final String FILE_PATH = "C:/JAVA_Projects/Articles/";
+    private final String DOWNLOAD_PATH = "C:/JAVA_Projects/Articles/Загрузки/";
 
     public ArticleController(AuthorizationServiceImplement authorizationServiceImplement,
                              PasswordEncoder passwordEncoder){
@@ -52,8 +49,12 @@ public class ArticleController {
     }
 
     @GetMapping("/article/{id}")
-    public String getArticle(@PathVariable("id") long id, Model model) throws IOException {
+    public String getArticle(@PathVariable("id") long id, Model model){
         Optional<Article> article = articleServiceImplement.getArticleById(id);
+        article.ifPresent(article1 -> {
+            article1.setCountVisits(article1.getCountVisits() + 1);
+            articleServiceImplement.editArticle(article1);
+        });
         List<Article> articleList = new ArrayList<>();
         article.ifPresent(articleList::add);
         model.addAttribute("article", articleList);
@@ -69,7 +70,50 @@ public class ArticleController {
             ex.printStackTrace();
         }
 
-        return "article_details";
+        return "article";
+    }
+
+    //TODO Это не совсем скачивание. Это копирование файлов из папки в папку
+    @GetMapping("/article/{id}/download")
+    public String downloadArticle(@PathVariable long id){
+        Optional<Article> article = articleServiceImplement.getArticleById(id);
+        article.ifPresent(article1 -> {
+            String articleURL = FILE_PATH + article1.getName() + ".docx";
+            FileChannel sourceChannel = null;
+            FileChannel destChannel = null;
+            try {
+                try {
+                    sourceChannel = new FileInputStream(articleURL).getChannel();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    destChannel = new FileOutputStream(DOWNLOAD_PATH + article1.getName() + ".docx").getChannel();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                assert destChannel != null;
+                assert sourceChannel != null;
+                destChannel.transferFrom(sourceChannel, 0, sourceChannel.size());
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally{
+                try {
+                    assert sourceChannel != null;
+                    sourceChannel.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    assert destChannel != null;
+                    destChannel.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        return "redirect:";
     }
 
     @GetMapping("/new_article")

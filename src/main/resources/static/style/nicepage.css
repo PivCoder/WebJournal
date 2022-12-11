@@ -16902,6 +16902,7 @@ h1 {
   font-size: 2.25rem;
 }
 h2 {
+  position: absolute;
   font-size: 1.5rem;
 }
 h3 {
@@ -20164,6 +20165,7 @@ a.pswp__share--download:hover {
   background-repeat: no-repeat;
 }
 .u-back-image {
+  position: relative;
   height: 100%;
   width: 100%;
   object-fit: cover;
