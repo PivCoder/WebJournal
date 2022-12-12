@@ -54,6 +54,9 @@
         <form th:action="'/article/' + ${field.id} + '/delete'" method="post">
           <button type="submit">Удалить</button>
         </form>
+          <form th:action="'/article/' + ${field.id} + '/download'" method="get">
+            <button type="submit">Скачать</button>
+          </form>
       </div>
   </div>
 </main>
